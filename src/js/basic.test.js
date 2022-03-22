@@ -4,7 +4,6 @@ import Character, {
   Bowerman, Swordsman, Magician, Daemon, Undead, Zombie,
 } from './app.js';
 
-
 test('creation of character', () => {
   const result1 = new Character('Ivan', 'bowerman', 20, 20);
   const expected = {

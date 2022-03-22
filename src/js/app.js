@@ -1,8 +1,5 @@
-/* eslint-disable linebreak-style */
 /* eslint-disable max-classes-per-file */
-/* eslint-disable padded-blocks */
 /* eslint-disable linebreak-style */
-
 export default class Character {
   constructor(name, type, attack, defence) {
     this.name = name;
@@ -27,7 +24,6 @@ export default class Character {
       this.health -= points * (1 - this.defence / 100);
     } else throw new Error('То, что мертво, умереть не может');
   }
-
 }
 
 export class Bowerman extends Character {
