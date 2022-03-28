@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable max-classes-per-file */
 /* eslint-disable linebreak-style */
 export default class Character {
@@ -9,6 +10,31 @@ export default class Character {
     this.attack = attack;
     this.defence = defence;
   }
+
+  /* get name() {
+    return this._name;
+  }
+
+  set name(value) {
+    if (value.length < 2 && value.length > 10) {
+      throw new Error('Некорректное имя');
+    }
+    this._name = `${value}`;
+  }
+
+  get type() {
+    return this._type;
+  }
+
+  set type(value) {
+    const arr = ['Bowman', 'Swordsman', 'Magician', 'Daemon', 'Undead', 'Zombie'];
+    arr.forEach((item) => {
+      if (value === item) {
+        this._type = value;
+      }
+    });
+    throw new Error('Некорректный тип');
+  } */
 
   levelUp() {
     if (this.health > 0) {
