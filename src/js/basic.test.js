@@ -1,70 +1,70 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable no-undef */
+/* eslint-disable linebreak-style */
 /* eslint-disable import/extensions */
 import Character, {
   Bowerman, Swordsman, Magician, Daemon, Undead, Zombie,
 } from './app.js';
 
 test('creation of character', () => {
-  const result1 = new Character('Ivan', 'bowerman', 20, 20);
+  const result1 = new Character('Ivan', 'Bowman');
   const expected = {
-    attack: 20,
-    defence: 20,
     health: 100,
     level: 1,
     name: 'Ivan',
-    type: 'bowerman',
+    type: 'Bowman',
   };
   expect(result1).toEqual(expected);
 });
 test('move to another level', () => {
-  const result1 = new Character('Ivan', 'bowerman', 20, 20);
+  const result1 = new Bowerman('Ivan', 'Bowman');
   result1.levelUp();
   const expected1 = {
-    attack: 24,
-    defence: 24,
+    attack: 30,
+    defence: 30,
     health: 100,
     level: 2,
     name: 'Ivan',
-    type: 'bowerman',
+    type: 'Bowman',
   };
   expect(result1).toEqual(expected1);
 });
 test('get damage', () => {
-  const result2 = new Character('Ivan', 'bowerman', 20, 20);
+  const result2 = new Bowerman('Ivan', 'Bowman');
   result2.damage(20);
   const expected2 = {
-    attack: 20,
-    defence: 20,
-    health: 84,
+    attack: 25,
+    defence: 25,
+    health: 85,
     level: 1,
     name: 'Ivan',
-    type: 'bowerman',
+    type: 'Bowman',
   };
   expect(result2).toEqual(expected2);
 });
 test('move to another level when the chatacter is dead', () => {
-  const result3 = new Character('Ivan', 'bowerman', 20, 20);
+  const result3 = new Character('Ivan', 'Bowman');
   result3.health = 0;
   expect(() => {
     result3.levelUp();
   }).toThrow();
 });
 test('get damage when the chatacter is dead', () => {
-  const result3 = new Character('Ivan', 'bowerman', 20, 20);
+  const result3 = new Character('Ivan', 'Bowman');
   result3.health = 0;
   expect(() => {
     result3.damage(20);
   }).toThrow();
 });
 test('creation of Bowerman', () => {
-  const bow = new Bowerman('Ivan', 'bowerman');
+  const bow = new Bowerman('Ivan', 'Bowman');
   const expected = {
     attack: 25,
     defence: 25,
     health: 100,
     level: 1,
     name: 'Ivan',
-    type: 'bowerman',
+    type: 'Bowman',
   };
   expect(bow).toEqual(expected);
 });
@@ -127,4 +127,20 @@ test('creation of Zombie', () => {
     type: 'Zombie',
   };
   expect(zombie).toEqual(expected);
+});
+
+test('incorrect name', () => {
+  expect(() => new Character('I', 'Bowman', 20, 20)).toThrow();
+});
+
+test('incorrect type', () => {
+  expect(() => new Character('Ivan', 'healer', 20, 20)).toThrow();
+});
+
+test('incorrect name', () => {
+  expect(() => new Character('Ivadelina22222', 'Bowman', 20, 20)).toThrow();
+});
+
+test('incorrect name', () => {
+  expect(() => new Character({}, 'Bowman', 20, 20)).toThrow();
 });

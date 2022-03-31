@@ -1,40 +1,24 @@
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable linebreak-style */
 /* eslint-disable max-classes-per-file */
 /* eslint-disable linebreak-style */
 export default class Character {
-  constructor(name, type, attack, defence) {
-    this.name = name;
-    this.type = type;
+  constructor(name, type/* , attack, defence */) {
+    const types = ['Bowman', 'Swordsman', 'Magician', 'Daemon', 'Undead', 'Zombie'];
+    if (name.length < 2 || name.length > 10 || typeof (name) !== 'string') {
+      throw new Error('Некорректное имя');
+    } else {
+      this.name = name;
+    }
+    if (!types.includes(type)) {
+      throw new Error('Некорректный тип');
+    } else {
+      this.type = type;
+    }
     this.health = 100;
     this.level = 1;
-    this.attack = attack;
-    this.defence = defence;
+    this.attack = undefined;
+    this.defence = undefined;
   }
-
-  /* get name() {
-    return this._name;
-  }
-
-  set name(value) {
-    if (value.length < 2 && value.length > 10) {
-      throw new Error('Некорректное имя');
-    }
-    this._name = `${value}`;
-  }
-
-  get type() {
-    return this._type;
-  }
-
-  set type(value) {
-    const arr = ['Bowman', 'Swordsman', 'Magician', 'Daemon', 'Undead', 'Zombie'];
-    arr.forEach((item) => {
-      if (value === item) {
-        this._type = value;
-      }
-    });
-    throw new Error('Некорректный тип');
-  } */
 
   levelUp() {
     if (this.health > 0) {
